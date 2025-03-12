@@ -91,6 +91,37 @@ In our analysis, we aim to explore the relationship between recipe ratings and n
      ```
    - This results in a value between 0 and 1, representing the fraction of total calories attributed to carbohydrates.
 
+The following table contains the columns of the cleaned dataframe. 
+   
+| Column            | Description                 |
+|------------------|-----------------------------|
+| `name`           | `<class 'str'>`             |
+| `id`             | `<class 'numpy.int64'>`     |
+| `minutes`        | `<class 'numpy.int64'>`     |
+| `contributor_id` | `<class 'numpy.int64'>`     |
+| `submitted`      | `<class 'str'>`             |
+| `tags`           | `<class 'str'>`             |
+| `nutrition`      | `<class 'list'>`            |
+| `n_steps`        | `<class 'numpy.int64'>`     |
+| `steps`          | `<class 'str'>`             |
+| `description`    | `<class 'str'>`             |
+| `ingredients`    | `<class 'str'>`             |
+| `n_ingredients`  | `<class 'numpy.int64'>`     |
+| `user_id`        | `<class 'numpy.float64'>`   |
+| `recipe_id`      | `<class 'numpy.int64'>`     |
+| `date`           | `<class 'str'>`             |
+| `rating`         | `<class 'numpy.float64'>`   |
+| `review`         | `<class 'str'>`             |
+| `avg_rating`     | `<class 'numpy.float64'>`   |
+| `calories`       | `<class 'numpy.float64'>`   |
+| `total fat`      | `<class 'numpy.float64'>`   |
+| `sugar`          | `<class 'numpy.float64'>`   |
+| `sodium`         | `<class 'numpy.float64'>`   |
+| `protein`        | `<class 'numpy.float64'>`   |
+| `saturated fat`  | `<class 'numpy.float64'>`   |
+| `carbohydrates`  | `<class 'numpy.float64'>`   |
+
+
 Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
 
 | Name                                    | ID      | Minutes | Submitted           | Rating | Avg Rating | Calories (#) | Carbohydrates (PDV)| prop_carbohydrates |
