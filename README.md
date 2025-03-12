@@ -91,3 +91,45 @@ In our analysis, we aim to explore the relationship between recipe ratings and n
      ```
    - This results in a value between 0 and 1, representing the fraction of total calories attributed to carbohydrates.
 
+
+### Univariate Analysis
+
+### Bivariate Analysis
+
+### Interesting Aggregates
+
+## Assessment of Missingness
+
+There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns.
+
+## NMAR Analysis
+
+We believe the missingness of the `review` column is NMAR because people who feel neutral about a recipe are less inclined to leave a review, as they may not see a reason to share their thoughts. Reviews are usually written by those who have strong reactions—either positive or negative—since their emotions push them to engage with the platform, complete the necessary steps, and take the time to write a review. For example, someone who loved the recipe would be more willing to go through the effort of posting positive feedback. Since the probability of missingness is directly tied to the underlying, unobserved review value, this makes the missing data NMAR.
+
+To explain the missingness of the `review` column, and therefore make it MAR, an example of additional data we would need to obtain is Demographic or User Profile Information. If certain user demographics (e.g., first-time visitors vs. regular users, experienced cooks vs. beginners) influence whether they leave reviews, then missingness might be explained by these factors rather than by the sentiment of the review itself.
+
+## Missingness Dependency
+
+We continued by analyzing the missingness of the `rating` column in the merged DataFrame by checking the dependency of its missingness on two other columns: `prop_carbohydrates`, the proportion of carbohydrates out of the total calories  and `n_ingredients`, the number of ingredients used in each recipe.
+
+> Proportion of Carbohydrates and Rating
+
+**Null Hypothesis:** The missingness of ratings does not depend on the proportion of carbohydrates in the recipe.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the proportion of carbohydrates in the recipe.
+
+**Test Statistic:** The absolute difference of mean in the proportion of carbohydrates of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+
+**Significance Level:** 0.05
+
+<iframe
+  src="assets/distr_carb_prop_missing_rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+
+
+
