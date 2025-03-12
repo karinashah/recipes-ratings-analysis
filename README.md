@@ -51,4 +51,43 @@ Through this investigation, we hope to gain insights into how carbohydrates cont
 
 ## Data Cleaning and Exploratory Data Analysis
 
+In our analysis, we aim to explore the relationship between recipe ratings and nutritional content, with a specific focus on carbohydrates. To standardize comparisons across recipes, we transformed the raw nutritional data into a proportion-based format. Specifically, we calculated `prop_carbohydrates`, which represents the proportion of calories in a recipe that come from carbohydrates. This transformation allows us to assess carbohydrate content relative to the overall caloric composition of a recipe, making it easier to compare across recipes with varying portion sizes and total calorie counts.  
+
+1. **Replace All Ratings of 0 with `NaN`**  
+   - Recipe ratings are typically on a scale from **1 to 5**, where **1** represents the lowest rating and **5** represents the highest.  
+   - A rating of **0** does not indicate a valid user rating but instead represents missing data.  
+   - To prevent bias in our analysis, we replaced all **0 ratings** with `NaN`, ensuring that they do not skew the results.  
+
+2. **Add an `avg_rating` Column**  
+   - Since each recipe can receive multiple ratings from different users, we calculated the **average rating per recipe**.  
+   - This allows us to gain a more comprehensive understanding of a recipe's overall reception rather than relying on individual ratings.  
+
+3. **Extract Nutrient Values into Separate Columns**  
+   - The `nutrition` column contains multiple nutrient values enclosed in brackets, but these values are stored as objects (similar to strings) rather than numerical data.  
+   - Using the dataset’s column description, we identified what each value represents and split the `nutrition` column into **separate numerical columns**.  
+   - We applied a lambda function to extract the values and converted them to **floats**, enabling numerical calculations and further analysis.  
+
+4. **Computing`prop_carbohydrates` column** 
+   - The dataset provides the carbohydrate content as a **percent daily value (PDV)** based on a standard 2,000-calorie diet.  
+   - Since PDV is given as a percentage, we first converted it into decimal form:  
+     ```
+     carbohydrates (decimal) = carbohydrates (PDV) / 100
+     ```
+
+   - The Dietary Guidelines for Americans recommend **275g** of carbohydrates per day as the **100% daily value** for a 2,000-calorie diet.  
+   - We multiplied the decimal value by **275** to estimate the grams of carbohydrates in a recipe:  
+     ```
+     carbohydrates (g) = carbohydrates (decimal) × 275
+     ```
+
+   - Since **1 gram of carbohydrates provides 4 calories**, we converted the carbohydrate content from grams to calories:  
+     ```
+     carbohydrate calories = carbohydrates (g) × 4
+     ```
+
+   - To standardize across recipes, we computed the proportion of total calories in the recipe that come from carbohydrates:  
+     ```
+     prop_carbohydrates = carbohydrate calories / total calories
+     ```
+   - This results in a value between 0 and 1, representing the fraction of total calories attributed to carbohydrates.
 
