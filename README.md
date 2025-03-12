@@ -35,3 +35,20 @@ The second dataset, `RAW_interactions.csv`, has **731,927** rows, representing u
 | **`date`**         | Date of Interaction |
 | **`rating`**       | Rating given |
 | **`review`**       | Review text |
+
+With these datasets, we aim to examine whether people rate high-sodium and low-sodium recipes differently. To support this analysis, we extracted individual nutrient values from the `nutrition` column into distinct categories such as `calories (#)`, `total fat (PDV)`, and `sodium (PDV)`. The PDV, or percent daily value, represents the percentage a nutrient contributes to a typical daily diet. 
+
+Furthermore, we calculated the proportion of sodium relative to the total calories in a recipe and stored this value in a new column, `prop_sodium`. Recipes classified as high-sodium are those with a `prop_sodium` value exceeding the average `prop_sodium` across all recipes.
+
+The key columns relevant to our analysis include:
+- `calories (#)`: The total calorie content of the recipe.
+- `sodium (PDV)`: The percent daily value of sodium.
+- `prop_sodium`: The proportion of sodium relative to total calories.
+- `rating`: The rating a user assigned to a recipe.
+- `avg_rating`: The average of all ratings for each unique recipe.
+
+Through this investigation, we hope to gain insights into how sodium content influences user ratings. These findings could help Food.com recipe contributors adjust their recipes to better meet consumer needs. Additionally, this study may serve as a foundation for future research on public awareness regarding the health risks associated with excessive sodium intake.
+
+## Data Cleaning and Exploratory Data Analysis
+
+
