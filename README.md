@@ -173,6 +173,23 @@ We continued by analyzing the missingness of the `rating` column in the merged D
   frameborder="0"
 ></iframe>
 
+We ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions that are described in the test statistic.
+
+<iframe
+  src="assets/permutation_test_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of rating does not depend on the proportion of carbohydrates in the recipe.
+
+
+
+
+
+
+
 
 
 
