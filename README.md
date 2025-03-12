@@ -120,7 +120,7 @@ The following table contains the columns of the cleaned dataframe.
 | `protein`        | `<class 'numpy.float64'>`   |
 | `saturated fat`  | `<class 'numpy.float64'>`   |
 | `carbohydrates`  | `<class 'numpy.float64'>`   |
-
+| `prop_carbohydrates`  | `<class 'numpy.float64'>`   |
 
 Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
 
