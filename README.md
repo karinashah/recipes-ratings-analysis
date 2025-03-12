@@ -123,7 +123,7 @@ We continued by analyzing the missingness of the `rating` column in the merged D
 **Significance Level:** 0.05
 
 <iframe
-  src="assets/distr_carb_prop_missing_rating.html"
+  src="assets/distr_carb_prop_missing_ratings.html"
   width="800"
   height="600"
   frameborder="0"
