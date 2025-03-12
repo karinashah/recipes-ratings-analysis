@@ -105,6 +105,7 @@ Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the f
 
 
 ### Univariate Analysis
+We created a plot representing the distribution of the proportion of carbohydrates in the recipes. As the plot shows, the distribution is skewed right which illustrates how the majority of recipes have a low proportion of carbohydrates. 
 
 ### Bivariate Analysis
 
