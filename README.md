@@ -139,6 +139,7 @@ Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the f
 We created a plot representing the distribution of the proportion of carbohydrates in the recipes. As the plot shows, the distribution is skewed right which illustrates how the majority of recipes have a low proportion of carbohydrates. 
 
 ### Bivariate Analysis
+We examined the distribution of the rating of the recipe conditioned on whether or not we classified it as being high in carbs. We used a bianizer from sklearn with a threshold of the mean of the "carbohydrate" column to create a new dataframe that classifies the recipe as being "True" if the "carbohydrate" amount associated with that recipe is above the threshold, and classifies the recipe as "False" if it is below the threshold. The graph below shows that the recipes with a rating of 4 and 5 are more likely to occur regardless if it is high in carbs or not. 
 
 ### Interesting Aggregates
 
