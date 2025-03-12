@@ -133,13 +133,25 @@ Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the f
 | 2000 Meatloaf                           | 306168  | 30      | 2008-05-30 00:00:00 | 4      | 4.0        | 267.0        | 2.0                | 0.082397         |
 
 
-
-
 ### Univariate Analysis
-We created a plot representing the distribution of the proportion of carbohydrates in the recipes. As the plot shows, the distribution is skewed right which illustrates how the majority of recipes have a low proportion of carbohydrates. 
+We created a plot representing the distribution of the proportion of carbohydrates in the recipes. As the plot shows, the distribution is skewed right which illustrates how the majority of recipes have a low proportion of carbohydrates.
+
+<iframe
+  src="assets/univariate_plot_final.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ### Bivariate Analysis
-We examined the distribution of the rating of the recipe conditioned on whether or not we classified it as being high in carbs. We used a bianizer from sklearn with a threshold of the mean of the "carbohydrate" column to create a new dataframe that classifies the recipe as being "True" if the "carbohydrate" amount associated with that recipe is above the threshold, and classifies the recipe as "False" if it is below the threshold. The graph below shows that the recipes with a rating of 4 and 5 are more likely to occur regardless if it is high in carbs or not. 
+We examined the distribution of the rating of the recipe conditioned on whether or not we classified it as being high in carbs. We used a binarizer from Sklearn with a threshold of the mean of the `carbohydrate` column to create a new dataframe that classifies the recipe as being "True" if the `carbohydrate` amount associated with that recipe is above the threshold, and classifies the recipe as `False` if it is below the threshold. The graph below shows that the recipes with a rating of 4 and 5 are more likely to occur regardless if it is high in carbs or not. 
+
+<iframe
+  src="assets/final_bivariate_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ### Interesting Aggregates
 
