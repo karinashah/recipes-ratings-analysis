@@ -158,7 +158,7 @@ We examined the distribution of the rating of the recipe conditioned on whether 
 
 ### Interesting Aggregates
 
-For this section, we looked at the relationship between the time it takes to make the recipe, in minutes, and the number of steps for a given recipe. We made this new DataFrame, and used data visualization to plot the relationship:
+For this section, we looked at the relationship between the time it takes to make the recipe, in minutes, and the number of steps for a given recipe. We made this new DataFrame, that groups recipes by their total time and calculates the average number of steps for each time interval:
 
 | minutes | n_steps   |
 |---------|----------|
@@ -173,6 +173,8 @@ For this section, we looked at the relationship between the time it takes to mak
 | 129     | 17.750000 |
 | 130     | 11.068396 |
 | 132     | 12.210526 |
+
+From this data, we observe that shorter recipes generally have fewer steps, while longer recipes tend to have more steps. However, the relationship is not always linear—some recipes with high time durations (e.g., 129 minutes) have significantly more steps than others in similar ranges. We visualized this trend using data visualization techniques to better understand the distribution. The interactive plot below illustrates this relationship:
 
 <iframe
   src="assets/pivot_table_plot.html"
