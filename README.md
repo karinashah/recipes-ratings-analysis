@@ -230,6 +230,7 @@ The observed statistic, 0.0033, can be observed by the red line on the graph. Si
 To explore whether users rate high-carbohydrate recipes differently than others, we conducted a permutation test comparing the ratings of recipes with above-average carbohydrate proportions to those with below-average carbohydrate proportions.
 
 **Null Hypothesis:** Carbohydrate content does not influence user ratings; recipes are rated the same regardless of their proportion of carbohydrates.
+
 **Alternative Hypothesis:** High-carbohydrate recipes receive lower ratings than low-carbohydrate ones.
 
 **Test Statistic**
@@ -256,6 +257,8 @@ The following histogram shows the distribution of mean rating differences under 
   height="600"
   frameborder="0"
 ></iframe>
+
+
 
 
 
