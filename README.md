@@ -89,8 +89,11 @@ In our analysis, we aim to explore the relationship between recipe ratings and n
      ```
      prop_carbohydrates = carbohydrate calories / total calories
      ```
-   - This results in a value between 0 and 1, representing the fraction of total calories attributed to carbohydrates.
-
+   - After computing prop_carbohydrates we noticed that some values happened to be greater than 1, we believe this could be due to an error when      the data was recorded (for example if PDV or total calories were slightly off), this could cause an issue with the proportion. Since there       were only 140 rows that had a proportion greater than 1 we dropped these rows since that is a very small proportion of our data and can be       disregarded.  
+   - After these steps the result of this column is values between 0 and 1, representing the fraction of total calories attributed to                 carbohydrates.
+5. **Dropping Duplicates**
+   - We then dropped duplicates so that there is only one row corresponding to each recipe 
+     
 The following table contains the columns of the cleaned dataframe. 
    
 | Column            | Description                 |
@@ -122,15 +125,15 @@ The following table contains the columns of the cleaned dataframe.
 | `carbohydrates`  | `<class 'numpy.float64'>`   |
 | `prop_carbohydrates`  | `<class 'numpy.float64'>`   |
 
-Our cleaned DataFrame ended up having 234428 rows and 26 columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
+Our cleaned DataFrame ended up having 83692 rows and 26 columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
 
 | Name                                    | ID      | Minutes | Submitted           | Rating | Avg Rating | Calories (#) | Carbohydrates (PDV)| prop_carbohydrates |
 |-----------------------------------------|---------|---------|---------------------|--------|------------|--------------|--------------------|------------------|
 | 1 Brownies in the World Best Ever       | 333281  | 40      | 2008-10-27 00:00:00 | 3      | 4.0        | 138.4        | 6.0                | 0.476879         |
 | 1 in Canada Chocolate Chip Cookies      | 453467  | 45      | 2011-04-11 00:00:00 | 5      | 5.0        | 595.1        | 26.0               | 0.480591         |
-| 50 Chilli For The Crockpot              | 306168  | 40      | 2008-05-30 00:00:00 | 4      | 5.0        | 194.8        | 3.0                | 0.169405         |
-| 412 Broccoli Casserole                  | 306168  | 40      | 2008-05-30 00:00:00 | 5      | 4.0        | 878.3        | 123.0	          | 0.488444         |
-| 2000 Meatloaf                           | 306168  | 30      | 2008-05-30 00:00:00 | 4      | 4.0        | 267.0        | 2.0                | 0.082397         |
+| Millionaire pound cake              | 286009  | 120      | 2008-02-12 00:00:00 | 4      | 5.0        | 878.3        | 39.0                | 0.488444         |
+| 412 Broccoli Casserole                  | 306168  | 40      | 2008-05-30 00:00:00 | 5      | 5.0        | 194.8        | 20.0	          | 0.169405         |
+| 2000 Meatloaf                           | 306168  | 30      | 2008-05-30 00:00:00 | 4      | 5.0        | 267.0        | 2.0                | 0.082397         |
 
 
 ### Univariate Analysis
@@ -157,7 +160,7 @@ We examined the distribution of the rating of the recipe conditioned on whether 
 
 ## Assessment of Missingness
 
-There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns.
+There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns. To evaluate the missingness, we used the dataframe before dropping the un-unique rows so that we have all of the information of every review for every recipe. 
 
 ## NMAR Analysis
 
