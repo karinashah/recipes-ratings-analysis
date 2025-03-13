@@ -248,9 +248,14 @@ We calculated an observed difference in mean rating of -0.0317. Then, we randoml
 
 The resulting p-value was 0.0001, meaning that the difference is statistically significant. This suggests that high-carbohydrate recipes tend to receive slightly lower ratings than low-carbohydrate ones.
 
-The following histogram shows the distribution of mean rating differences under the null hypothesis. The red line represents the observed difference in our dataset.
+The following histogram shows the distribution of mean rating differences under the null hypothesis. The red line represents the observed difference in our dataset:
 
-
+<iframe
+  src="assets/test_perm_test_carb_final.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 
