@@ -158,6 +158,29 @@ We examined the distribution of the rating of the recipe conditioned on whether 
 
 ### Interesting Aggregates
 
+For this section, we looked at the relationship between the time it takes to make the recipe, in minutes, and the number of steps for a given recipe. We made this new DataFrame, and used data visualization to plot the relationship:
+
+| minutes | n_steps   |
+|---------|----------|
+| 0       | 1.000000 |
+| 1       | 3.744493 |
+| 2       | 3.233593 |
+| 3       | 3.742204 |
+| 4       | 4.807547 |
+| ...     | ...      |
+| 127     | 8.111111 |
+| 128     | 12.181818 |
+| 129     | 17.750000 |
+| 130     | 11.068396 |
+| 132     | 12.210526 |
+
+<iframe
+  src="assets/pivot_table_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 ## Assessment of Missingness
 
 There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns. To evaluate the missingness, we used the dataframe before dropping the un-unique rows so that we have all of the information of every review for every recipe. 
