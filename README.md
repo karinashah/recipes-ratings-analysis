@@ -144,7 +144,7 @@ We created a plot representing the distribution of the proportion of carbohydrat
 ></iframe>
 
 ### Bivariate Analysis
-We examined the distribution of the rating of the recipe conditioned on whether or not we classified it as being high in carbs. We used a binarizer from Sklearn with a threshold of the mean of the `carbohydrate` column to create a new dataframe that classifies the recipe as being "True" if the `carbohydrate` amount associated with that recipe is above the threshold, and classifies the recipe as `False` if it is below the threshold. The graph below shows that the recipes with a rating of 4 and 5 are more likely to occur regardless if it is high in carbs or not. 
+We examined the distribution of the rating of the recipe conditioned on whether or not we classified it as being high in carbs. We used a binarizer from Sklearn with a threshold of the mean of the `carbohydrate` column to create a new dataframe that classifies the recipe as being `True` if the `carbohydrate` amount associated with that recipe is above the threshold, and classifies the recipe as `False` if it is below the threshold. The graph below shows that the recipes with a rating of 4 and 5 are more likely to occur regardless if it is high in carbs or not. 
 
 <iframe
   src="assets/final_bivariate_plot.html"
@@ -175,7 +175,7 @@ We continued by analyzing the missingness of the `rating` column in the merged D
 
 **Alternate Hypothesis:** The missingness of ratings does depend on the proportion of carbohydrates in the recipe.
 
-**Test Statistic:** The absolute difference of mean in the proportion of carbohydrates of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+**Test Statistic:** The absolute difference of mean in the proportion of carbohydrates of the distribution of the group with missing ratings and the distribution of the group without missing ratings.
 
 **Significance Level:** 0.05
 
