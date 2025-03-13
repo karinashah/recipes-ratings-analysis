@@ -223,7 +223,34 @@ We ran a permutation test by shuffling the missingness of rating for 1000 times 
   frameborder="0"
 ></iframe>
 
-The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of rating does not depend on the proportion of carbohydrates in the recipe.
+The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of `review` does not depend on the `prop_carbohydrates` in the recipe.
+
+## Hypothesis Testing
+
+To explore whether users rate high-carbohydrate recipes differently than others, we conducted a permutation test comparing the ratings of recipes with above-average carbohydrate proportions to those with below-average carbohydrate proportions.
+
+**Null Hypothesis:** Carbohydrate content does not influence user ratings; recipes are rated the same regardless of their proportion of carbohydrates.
+**Alternative Hypothesis:** High-carbohydrate recipes receive lower ratings than low-carbohydrate ones.
+
+**Test Statistic**
+We measured the difference in mean ratings between high- and low-carbohydrate recipes.
+
+**Significance Level**
+We set a 0.05 threshold for statistical significance.
+
+A permutation test was chosen because we lack information about an underlying population distribution. This method allows us to determine whether the observed difference in ratings is due to chance. We hypothesized that high-carb recipes might receive lower ratings because users could associate them with unhealthy eating habits.
+
+To test this, we split the dataset into two groups:
+
+High-carb recipes: Recipes where `prop_carbohydrates` is above the average.
+Low-carb recipes: Recipes where `prop_carbohydrates` is below or equal to the average.
+We calculated an observed difference in mean rating of -0.0317. Then, we randomly shuffled the ratings 1,000 times to generate a null distribution.
+
+The resulting p-value was 0.0001, meaning that the difference is statistically significant. This suggests that high-carbohydrate recipes tend to receive slightly lower ratings than low-carbohydrate ones.
+
+The following histogram shows the distribution of mean rating differences under the null hypothesis. The red line represents the observed difference in our dataset.
+
+
 
 
 
