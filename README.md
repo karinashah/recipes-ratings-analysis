@@ -208,7 +208,7 @@ We continued by analyzing the missingness of the `rating` column in the merged D
 
 **Significance Level:** 0.05
 
-We ran another permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
+We ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
 
 <iframe
   src="assets/sodium_p_value.html"
@@ -236,7 +236,7 @@ The observed statistic, 4.215, can be observed by the red line on the graph. Sin
   frameborder="0"
 ></iframe>
 
-We ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions that are described in the test statistic.
+We ran another permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions that are described in the test statistic.
 
 <iframe
   src="assets/permutation_test_plot.html"
