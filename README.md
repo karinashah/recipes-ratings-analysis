@@ -230,7 +230,7 @@ The observed statistic, 4.215, can be observed by the red line on the graph. Sin
 **Significance Level:** 0.05
 
 <iframe
-  src="assets/distr_carb_prop_missing_ratings.html"
+  src="assets/distr_carb_prop_missing_rating.html"
   width="800"
   height="600"
   frameborder="0"
@@ -249,7 +249,7 @@ The observed statistic, 0.0033, can be observed by the red line on the graph. Si
 
 ## Hypothesis Testing
 
-To explore whether users rate high-carbohydrate recipes differently than others, we conducted a permutation test comparing the ratings of recipes with above-average carbohydrate proportions to those with below-average carbohydrate proportions.
+As we mentioned before, we are interested in investigating whether users rate recipes differently based on whether or not they are high-carb recipes. To explore whether users rate high-carb recipes differently than others, we conducted a permutation test comparing the ratings of recipes with above-average carbohydrate proportions to those with below-average carbohydrate proportions.
 
 **Null Hypothesis:** Carbohydrate content does not influence user ratings; recipes are rated the same regardless of their proportion of carbohydrates.
 
@@ -267,9 +267,8 @@ To test this, we split the dataset into two groups:
 
 High-carb recipes: Recipes where `prop_carbohydrates` is above the average.
 Low-carb recipes: Recipes where `prop_carbohydrates` is below or equal to the average.
-We calculated an observed difference in mean rating of -0.0317. Then, we randomly shuffled the ratings 1,000 times to generate a null distribution.
 
-Since the p-value we obtained (0.0001) is below the significance level of 0.05, we reject the null hypothesis. This suggests that people do not rate all recipes uniformly and tend to give lower ratings to recipes with more carbohydrates. A possible explanation for this finding is that individuals may be mindful of health risks associated with carb-heavy foods, or might prefer diets such as a keto or paleo diet where carbohydrates are cut down on.
+We calculated an observed difference in mean rating of -0.0317. Then, we randomly shuffled the ratings 1,000 times to generate a null distribution.
 
 The following histogram shows the distribution of mean rating differences under the null hypothesis. The red line represents the observed difference in our dataset:
 
@@ -279,6 +278,9 @@ The following histogram shows the distribution of mean rating differences under 
   height="600"
   frameborder="0"
 ></iframe>
+
+Since the p-value we obtained (0.0001) is below the significance level of 0.05, we reject the null hypothesis. This suggests that people do not rate all recipes uniformly and tend to give lower ratings to recipes with more carbohydrates. A possible explanation for this finding is that individuals may be mindful of health risks associated with higher-carb foods, and might even prefer diets such as a keto or paleo diet where carbohydrates are heavily cut down on.
+
 
 
 
