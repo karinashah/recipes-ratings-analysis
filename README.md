@@ -282,15 +282,19 @@ Since the p-value we obtained (0.0001) is below the significance level of 0.05, 
 
 ## Framing a Prediction Problem
 
-We aim to develop a model that predicts the **average rating (`avg_rating`)** of a recipe based on its nutritional composition and other recipe attributes. Understanding how different factors influence user ratings can help recipe creators optimize their dishes to better align with consumer preferences. We also previously identified a correlation between ratings and recipes with a carbohydrate proportion higher than the average. This suggests that the proportion of carbohydrates may be a gzood predictor of a recipe's rating.
+We aim to develop a model that predicts the **average rating (`avg_rating`)** of a recipe based on its nutritional composition and other recipe attributes. Understanding how different factors influence user ratings can help recipe creators optimize their dishes to better align with consumer preferences. We also previously identified a correlation between ratings and recipes with a carbohydrate proportion higher than the average. This suggests that the proportion of carbohydrates may be a good predictor of a recipe's rating.
 
 This is a **multiclass classification problem**, as the target variable, `avg_rating`, is a categorical, ordinal variable and can take one of five possible values: **1, 2, 3, 4, or 5**. Our response variable is `avg_rating`, representing the overall user rating for a recipe. We chose to predict this variable instead of individual ratings to reduce noise and ensure a more reliable measure of recipe quality. 
 
-To evaluate our model, we will use the F1 score instead of accuracy, since the distribution of ratings is going to be skewed a lot to the left, since most of the ratings in the dataset are 4's and 5's. Using accuracy might make the model's performance biased since there would be imbalanced classes.
+To evaluate our model, we will use the F1 score instead of accuracy, since the distribution of ratings is going to be highly skewed to the left, since most of the ratings in the dataset are 4's and 5's. Using accuracy might make the model's performance biased since there would be imbalanced classes.
 
 Before making our predictions, we have access to all the columns in the `rating` dataset, as listed in the introduction. These columns serve as features related to the recipes themselves, meaning they are available even if no ratings or reviews have been submitted.
 
 ## Baseline Model
+For our baseline model we decided to use a random forest classifier and split the data into a training and testing set. For this model we have decided to use “prop_carbohydrates”, a column containing numerical data representing the proportion of calories in the recipe that come from carbohydrates and “minutes” a column also containing numerical data representing how long a recipe takes as features for predicting “avg_rating”. We dropped the rows that had an “avg_rating” of Nans because this data is not useful to our model. 
+
+The average weighted F1 score of this model is 0.479. We used a weighted F1 score to evaluate the average F1 score because the frequency of avg_ratings of 4’s and 5’s is much higher than the other ratings. The F1 score for each avg_rating category is 0.0 for an  avg_rating of 1, 0.0073 for an avg_rating of 2, 0.0497 for an avg_rating of 3, 0.339 for an avg_rating of 4, and 0.609 for an avg_rating of 5. From these scores we can conclude that the model makes more accurate predictions for rating 4’s and 5’s and less accurate for lower ratings. The higher F1 scores for 4’s and 5’s suggests that these ratings are the majority classes, meaning that they occur much more frequently in the data. The F1 score of 0 for an avg_rating of 1’s means that the model never predicted this rating, this could be due to the fact that the Random Forest is favoring classes 4 and 5 because they dominate the dataset and has too few 1’s to learn the patterns or recipes with an avg_rating of 1. 
+
 
 ## Final Model
 
