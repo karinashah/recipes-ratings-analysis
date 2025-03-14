@@ -89,50 +89,51 @@ In our analysis, we aim to explore the relationship between recipe ratings and n
      ```
      prop_carbohydrates = carbohydrate calories / total calories
      ```
-   - After computing prop_carbohydrates we noticed that some values happened to be greater than 1, we believe this could be due to an error when      the data was recorded (for example if PDV or total calories were slightly off), this could cause an issue with the proportion. Since there       were only 140 rows that had a proportion greater than 1 we dropped these rows since that is a very small proportion of our data and can be       disregarded.  
-   - After these steps the result of this column is values between 0 and 1, representing the fraction of total calories attributed to                 carbohydrates.
+   - After computing `prop_carbohydrates` we noticed that some values happened to be greater than 1, we believe this could be due to an error when the data was recorded (for example if PDV or total calories were slightly off), this could cause an issue with the proportion. Since there were only 140 rows that had a proportion greater than 1, we dropped these rows since that is a very small proportion of our data and can be disregarded.
+   - After these steps the result of this column is values between 0 and 1, representing the fraction of total calories attributed to carbohydrates.
+
 5. **Dropping Duplicates**
    - We then dropped duplicates so that there is only one row corresponding to each recipe 
      
 The following table contains the columns of the cleaned dataframe. 
    
-| Column            | Description                 |
-|------------------|-----------------------------|
-| `name`           | `<class 'str'>`             |
-| `id`             | `<class 'numpy.int64'>`     |
-| `minutes`        | `<class 'numpy.int64'>`     |
-| `contributor_id` | `<class 'numpy.int64'>`     |
-| `submitted`      | `<class 'str'>`             |
-| `tags`           | `<class 'str'>`             |
-| `nutrition`      | `<class 'list'>`            |
-| `n_steps`        | `<class 'numpy.int64'>`     |
-| `steps`          | `<class 'str'>`             |
-| `description`    | `<class 'str'>`             |
-| `ingredients`    | `<class 'str'>`             |
-| `n_ingredients`  | `<class 'numpy.int64'>`     |
-| `user_id`        | `<class 'numpy.float64'>`   |
-| `recipe_id`      | `<class 'numpy.int64'>`     |
-| `date`           | `<class 'str'>`             |
-| `rating`         | `<class 'numpy.float64'>`   |
-| `review`         | `<class 'str'>`             |
-| `avg_rating`     | `<class 'numpy.float64'>`   |
-| `calories`       | `<class 'numpy.float64'>`   |
-| `total fat`      | `<class 'numpy.float64'>`   |
-| `sugar`          | `<class 'numpy.float64'>`   |
-| `sodium`         | `<class 'numpy.float64'>`   |
-| `protein`        | `<class 'numpy.float64'>`   |
-| `saturated fat`  | `<class 'numpy.float64'>`   |
-| `carbohydrates`  | `<class 'numpy.float64'>`   |
-| `prop_carbohydrates`  | `<class 'numpy.float64'>`   |
+| Column              | Description               |
+|---------------------|---------------------------|
+| `name`             | `<class 'str'>`           |
+| `id`               | `<class 'numpy.int64'>`   |
+| `minutes`          | `<class 'numpy.int64'>`   |
+| `contributor_id`   | `<class 'numpy.int64'>`   |
+| `submitted`        | `<class 'str'>`           |
+| `tags`             | `<class 'str'>`           |
+| `nutrition`        | `<class 'list'>`          |
+| `n_steps`         | `<class 'numpy.int64'>`   |
+| `steps`           | `<class 'str'>`           |
+| `description`     | `<class 'str'>`           |
+| `ingredients`     | `<class 'str'>`           |
+| `n_ingredients`   | `<class 'numpy.int64'>`   |
+| `user_id`         | `<class 'numpy.float64'>` |
+| `recipe_id`       | `<class 'numpy.int64'>`   |
+| `date`           | `<class 'str'>`           |
+| `rating`         | `<class 'numpy.float64'>` |
+| `review`         | `<class 'str'>`           |
+| `avg_rating`     | `<class 'numpy.float64'>` |
+| `calories`       | `<class 'numpy.float64'>` |
+| `total fat`      | `<class 'numpy.float64'>` |
+| `sugar`         | `<class 'numpy.float64'>` |
+| `sodium`        | `<class 'numpy.float64'>` |
+| `protein`       | `<class 'numpy.float64'>` |
+| `saturated fat` | `<class 'numpy.float64'>` |
+| `carbohydrates` | `<class 'numpy.float64'>` |
+| `prop_carbohydrates` | `<class 'numpy.float64'>` |
 
-Our cleaned DataFrame ended up having 83692 rows and 26 columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
+Our cleaned DataFrame ended up having **83692** rows and **26** columns. Here are the first 5 rows of our DataFrame, with relevant columns to our analysis since there are more than 25 columns and we might not need to use all of them:
 
-| Name                                    | ID      | Minutes | Submitted           | Rating | Avg Rating | Calories (#) | Carbohydrates (PDV)| prop_carbohydrates |
+| Name                                    | ID      | Minutes | Submitted           | Rating | Avg Rating | Calories (#) | Carbohydrates (PDV)|prop_carbohydrates|
 |-----------------------------------------|---------|---------|---------------------|--------|------------|--------------|--------------------|------------------|
 | 1 Brownies in the World Best Ever       | 333281  | 40      | 2008-10-27 00:00:00 | 3      | 4.0        | 138.4        | 6.0                | 0.476879         |
 | 1 in Canada Chocolate Chip Cookies      | 453467  | 45      | 2011-04-11 00:00:00 | 5      | 5.0        | 595.1        | 26.0               | 0.480591         |
-| Millionaire pound cake              | 286009  | 120      | 2008-02-12 00:00:00 | 4      | 5.0        | 878.3        | 39.0                | 0.488444         |
-| 412 Broccoli Casserole                  | 306168  | 40      | 2008-05-30 00:00:00 | 5      | 5.0        | 194.8        | 20.0	          | 0.169405         |
+| Millionaire pound cake                  | 286009  | 120     | 2008-02-12 00:00:00 | 4      | 5.0        | 878.3        | 39.0               | 0.488444         |
+| 412 Broccoli Casserole                  | 306168  | 40      | 2008-05-30 00:00:00 | 5      | 5.0        | 194.8        | 20.0	              | 0.169405         |
 | 2000 Meatloaf                           | 306168  | 30      | 2008-05-30 00:00:00 | 4      | 5.0        | 267.0        | 2.0                | 0.082397         |
 
 
@@ -185,7 +186,7 @@ From this data, we observe that shorter recipes generally have fewer steps, whil
 
 ## Assessment of Missingness
 
-There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns. To evaluate the missingness, we used the dataframe before dropping the un-unique rows so that we have all of the information of every review for every recipe. 
+There are 3 columns in the merged dataframe that have missing values: `date`, `rating`, and `review`. In the following section we will be analzying the missigness of these columns. To evaluate the missingness, we used the dataframe before dropping the non-unique rows so that we have all of the information of every review for every recipe. 
 
 ## NMAR Analysis
 
@@ -195,7 +196,28 @@ To explain the missingness of the `review` column, and therefore make it MAR, an
 
 ## Missingness Dependency
 
-We continued by analyzing the missingness of the `rating` column in the merged DataFrame by checking the dependency of its missingness on two other columns: `prop_carbohydrates`, the proportion of carbohydrates out of the total calories  and `n_ingredients`, the number of ingredients used in each recipe.
+We continued by analyzing the missingness of the `rating` column in the merged DataFrame by checking the dependency of its missingness on two other columns: `prop_carbohydrates`, the proportion of carbohydrates out of the total calories and `sodium`, the amount of sodium used in each recipe.
+
+> Sodium and Rating
+
+**Null Hypothesis:** The missingness of ratings does not depend on the amount of sodium in the recipe.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the amount of sodium in the recipe.
+
+**Test Statistic:** The absolute difference of mean in amount of sodium in the recipe of the distribution of the group with missing ratings and the distribution of the group without missing ratings.
+
+**Significance Level:** 0.05
+
+We ran another permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
+
+<iframe
+  src="assets/sodium_p_value.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The observed statistic, 4.215, can be observed by the red line on the graph. Since the p-value that we found, 0.001, is less than 0.05, we reject the null hypothesis. The missingness of `rating` does depend on the amount of `sodium` in the recipe.
 
 > Proportion of Carbohydrates and Rating
 
@@ -223,7 +245,7 @@ We ran a permutation test by shuffling the missingness of rating for 1000 times 
   frameborder="0"
 ></iframe>
 
-The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of `review` does not depend on the `prop_carbohydrates` in the recipe.
+The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of `rating` does not depend on the `prop_carbohydrates` in the recipe.
 
 ## Hypothesis Testing
 
@@ -234,12 +256,12 @@ To explore whether users rate high-carbohydrate recipes differently than others,
 **Alternative Hypothesis:** High-carbohydrate recipes receive lower ratings than low-carbohydrate ones.
 
 **Test Statistic**
-We measured the difference in mean ratings between high- and low-carbohydrate recipes.
+We measured the difference in mean ratings between high-carbohydrate and low-carbohydrate recipes.
 
 **Significance Level**
 We set a 0.05 threshold for statistical significance.
 
-A permutation test was chosen because we lack information about an underlying population distribution. This method allows us to determine whether the observed difference in ratings is due to chance. We hypothesized that high-carb recipes might receive lower ratings because users could associate them with unhealthy eating habits.
+A permutation test was chosen because we lack information about an underlying population distribution. This method allows us to determine whether the observed difference in ratings is due to chance. We hypothesized that high-carb recipes might receive lower ratings because users could associate them with unhealthy eating habits, and because of new growing trends in low-carbohydrate diets such as a keto or paleo diets, which emphasize cutting carbohydrates.
 
 To test this, we split the dataset into two groups:
 
@@ -247,7 +269,7 @@ High-carb recipes: Recipes where `prop_carbohydrates` is above the average.
 Low-carb recipes: Recipes where `prop_carbohydrates` is below or equal to the average.
 We calculated an observed difference in mean rating of -0.0317. Then, we randomly shuffled the ratings 1,000 times to generate a null distribution.
 
-The resulting p-value was 0.0001, meaning that the difference is statistically significant. This suggests that high-carbohydrate recipes tend to receive slightly lower ratings than low-carbohydrate ones.
+Since the p-value we obtained (0.0001) is below the significance level of 0.05, we reject the null hypothesis. This suggests that people do not rate all recipes uniformly and tend to give lower ratings to recipes with more carbohydrates. A possible explanation for this finding is that individuals may be mindful of health risks associated with carb-heavy foods, or might prefer diets such as a keto or paleo diet where carbohydrates are cut down on.
 
 The following histogram shows the distribution of mean rating differences under the null hypothesis. The red line represents the observed difference in our dataset:
 
