@@ -217,7 +217,7 @@ We ran a permutation test by shuffling the missingness of rating for 1000 times 
   frameborder="0"
 ></iframe>
 
-The observed statistic, 4.215, can be observed by the red line on the graph. Since the p-value that we found, 0.001, is less than 0.05, we reject the null hypothesis. The missingness of `rating` does depend on the amount of `sodium` in the recipe.
+The observed statistic, 4.215, can be observed by the red line on the graph. Since the p-value that we found, 0.001, is less than 0.05, we reject the null hypothesis. The missingness of `rating` **does** depend on the amount of `sodium` in the recipe.
 
 > Proportion of Carbohydrates and Rating
 
@@ -245,7 +245,7 @@ We ran another permutation test by shuffling the missingness of rating for 1000 
   frameborder="0"
 ></iframe>
 
-The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of `rating` does not depend on the `prop_carbohydrates` in the recipe.
+The observed statistic, 0.0033, can be observed by the red line on the graph. Since the p-value that we found, 0.102, is greater than 0.05, we fail to reject the null hypothesis. The missingness of `rating` **does not** depend on the `prop_carbohydrates` in the recipe.
 
 ## Hypothesis Testing
 
@@ -255,8 +255,7 @@ As we mentioned before, we are interested in investigating whether users rate re
 
 **Alternative Hypothesis:** High-carbohydrate recipes receive lower ratings than low-carbohydrate ones.
 
-**Test Statistic**
-We measured the difference in mean ratings between high-carbohydrate and low-carbohydrate recipes.
+**Test Statistic:** We measured the difference in mean ratings between high-carbohydrate and low-carbohydrate recipes.
 
 **Significance Level**
 We set a 0.05 threshold for statistical significance.
@@ -281,7 +280,21 @@ The following histogram shows the distribution of mean rating differences under 
 
 Since the p-value we obtained (0.0001) is below the significance level of 0.05, we reject the null hypothesis. This suggests that people do not rate all recipes uniformly and tend to give lower ratings to recipes with more carbohydrates. A possible explanation for this finding is that individuals may be mindful of health risks associated with higher-carb foods, and might even prefer diets such as a keto or paleo diet where carbohydrates are heavily cut down on.
 
+## Framing a Prediction Problem
 
+We aim to develop a model that predicts the **average rating (`avg_rating`)** of a recipe based on its nutritional composition and other recipe attributes. Understanding how different factors influence user ratings can help recipe creators optimize their dishes to better align with consumer preferences. We also previously identified a correlation between ratings and recipes with a carbohydrate proportion higher than the average. This suggests that the proportion of carbohydrates may be a gzood predictor of a recipe's rating.
+
+This is a **multiclass classification problem**, as the target variable, `avg_rating`, is a categorical, ordinal variable and can take one of five possible values: **1, 2, 3, 4, or 5**. Our response variable is `avg_rating`, representing the overall user rating for a recipe. We chose to predict this variable instead of individual ratings to reduce noise and ensure a more reliable measure of recipe quality. 
+
+To evaluate our model, we will use the F1 score instead of accuracy, since the distribution of ratings is going to be skewed a lot to the left, since most of the ratings in the dataset are 4's and 5's. Using accuracy might make the model's performance biased since there would be imbalanced classes.
+
+Before making our predictions, we have access to all the columns in the `rating` dataset, as listed in the introduction. These columns serve as features related to the recipes themselves, meaning they are available even if no ratings or reviews have been submitted.
+
+## Baseline Model
+
+## Final Model
+
+## Fairness Analysis
 
 
 
