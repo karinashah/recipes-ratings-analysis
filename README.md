@@ -297,24 +297,64 @@ We chose to use F1 score as the metric for measuring our models performance beca
 
 
 ## Final Model
-For our final model, we decided to use ‘minutes’, ‘calories’, ‘n_ingredients’, ‘long_review’, and ‘prop_carbohydrates’ as the features to predict avg_rating. 
+For our final model, we decided to use `minutes`, `calories`, `n_ingredients`, `long_review`, and `prop_carbohydrates` as the features to predict `avg_rating`. 
 
-The ‘minutes’ column is the time each recipe takes in minutes. By calculating the mean ‘minutes’ for each avg_rating category (1-5) we concluded that recipes with an avg_rating of 5 took on average much longer to make than the recipes with smaller ratings. This difference leads us to believe that including the ‘minutes’ could potentially improve our model and help more accurately predict the avg_ratings of recipes). For this feature we decided to use StandardScaler to standardize the ‘minutes’ feature to normalize the distribution which ensures that the data from this numerical column can be used in unison with other numerical features. 
+The `minutes` column is the time each recipe takes in minutes. By calculating the mean `minutes` for each avg_rating category (1-5) we concluded that recipes with an `avg_rating` of 5 took on average much longer to make than the recipes with smaller ratings. This difference leads us to believe that including the `minutes` could potentially improve our model and help more accurately predict the `avg_rating`'s of recipes). For this feature we decided to use StandardScaler to standardize the `minutes` feature to normalize the distribution which ensures that the data from this numerical column can be used in unison with other numerical features. 
 
-The ‘calories’ column contains the total calories of each recipe. By calculating the mean ‘calories’ for each avg_rating category (1-5) we concluded that recipes with less calories tended to have a higher rating (of either 4 or 5). Therefore we believe that including ‘calories’ as a feature could be useful when predicting the avg_rating, since it seems likely that there is a correlation. We also concluded that there are many recipes that have a calorie count which is outside of the IQR, meaning they are considered outliers. Therefore for this feature we decided to use RobustScaler because it is more robust to outliers due to the fact it used the median and IQR to standardize the data. This is important so that the model is not influenced by the many outliers that exist in the ‘calories’ column. 
+The `calories` column contains the total calories of each recipe. By calculating the mean `calories` for each avg_rating category (1-5) we concluded that recipes with less calories tended to have a higher rating (of either 4 or 5). Therefore we believe that including `calories` as a feature could be useful when predicting the `avg_rating`, since it seems likely that there is a correlation. We also concluded that there are many recipes that have a calorie count which is outside of the IQR, meaning they are considered outliers. Therefore for this feature we decided to use RobustScaler because it is more robust to outliers due to the fact it used the median and IQR to standardize the data. This is important so that the model is not influenced by the many outliers that exist in the `calories` column. 
 
-The ‘n_ingredient’ column contains the number of ingredients used in each recipe. We decided to use ‘n_ingredients’ as a feature to predict the avg_rating because after calculating the mean of ‘n_ingredient’ for each category in rating, there was a slight upward trend that as the n_ingredients increased so did the avg_rating. For this feature we decided to use StandardScaler to standardize the distribution which ensures that the data from this numerical column can be used in unison with the other numerical features in our model such as ‘minutes’. 
+The `n_ingredients` column contains the number of ingredients used in each recipe. We decided to use `n_ingredients` as a feature to predict the `avg_rating` because after calculating the mean of `n_ingredient` for each category in rating, there was a slight upward trend that as the `n_ingredients` increased so did the `avg_rating`. For this feature we decided to use StandardScaler to standardize the distribution which ensures that the data from this numerical column can be used in unison with the other numerical features in our model such as `minutes`. 
 
-The ‘long_review’ column categorizes the data as having a long review or short review by using the mean length of the ‘reviews’ column and then using a binarizer to classify each review as being a long review or not (if the recipe had no review we used 0 as the length of the review). We chose this feature because we believed that there is likely a correlation between the length of the review and the rating it was given. People are more likely to leave a review if they have strong opinions about the recipe, and are more likely to not leave a review if they had mediocre feelings about it. We used one hot encoding for this column since it is binary.
+The `long_review` column categorizes the data as having a long review or short review by using the mean length of the `reviews` column and then using a binarizer to classify each review as being a long review or not (if the recipe had no review we used 0 as the length of the review). We chose this feature because we believed that there is likely a correlation between the length of the review and the rating it was given. People are more likely to leave a review if they have strong opinions about the recipe, and are more likely to not leave a review if they had mediocre feelings about it. We used one hot encoding for this column since it is binary.
 
-The ‘prop_carbohydrates’ column contains the proportion of calories that come from carbohydrates out of the total calories in the recipe. According to our hypothesis test, people rate recipes with a smaller proportion of carbohydrates higher than those with a lower proportion. Due to this result we believe this feature would be beneficial to use in our model to predict avg_ratings since there seems to be correlation between prop_carbohydrates and avg_rating. We don’t need to standardize or transform this feature because the values are in between 0 and 1.  
+The `prop_carbohydrates` column contains the proportion of calories that come from carbohydrates out of the total calories in the recipe. According to our hypothesis test, people rate recipes with a smaller proportion of carbohydrates higher than those with a lower proportion. Due to this result we believe this feature would be beneficial to use in our model to predict avg_ratings since there seems to be correlation between `prop_carbohydrates` and `avg_rating`. We don’t need to standardize or transform this feature because the values are in between 0 and 1.  
 
-We decided to use a RandomForestClassifier as our modeling algorithm because we have concluded that the relationship between many of the columns and avg_rating is not linear and Random Forests are suited to model complex non-linear relationships. We then used GridSearchCV to figure out the best parameters for max depth and n estimators. We found that the best combination of these hyperparameters is None for the max depth and 50 for the n estimators. 
+We decided to use a RandomForestClassifier as our modeling algorithm because we have concluded that the relationship between many of the columns and `avg_rating` is not linear and Random Forests are suited to model complex non-linear relationships. We then used GridSearchCV to figure out the best parameters for max depth and n estimators. We found that the best combination of these hyperparameters is None for the max depth and 50 for the n estimators. 
 
 The overall  weighted F1 score of this model is 0.5, which is a .021 increase from the F1 score of the baseline model. The F1 score for a rating of 1 is 0.0, 2 is 0.0, 3 is 0.0073, 4 is 0.27, and 5 is 0.69.  
 
-
 ## Fairness Analysis
+
+For this fairness analysis, we examine whether our model performs differently for **short recipes** vs. **long recipes**, using the **mean preparation time** (`minutes`) as the threshold.  
+
+- **Group X:** Short recipes (**≤ mean preparation time**)  
+- **Group Y:** Long recipes (**> mean preparation time**)  
+
+We used the **F1-score** as our evaluation metric because:  
+- It balances **precision and recall**, making it suitable for multiclass classification.  
+- It helps assess whether our model systematically favors one group over another.  
+
+- **Null Hypothesis (H₀):** The model is fair—its F1-score for short and long recipes is roughly the same, and any observed differences are due to random chance.  
+- **Alternative Hypothesis (H₁):** The model is unfair—its F1-score for short recipes is lower than for long recipes, indicating worse performance on shorter recipes.  
+
+- **Test Statistic:** The absolute difference in F1-score between short and long recipes.  
+- **Significance Level (α):** 0.05 (5%)  
+
+1. **Compute observed F1-scores** for both short and long recipes.  
+2. **Shuffle the `minutes` column** randomly to break any real relationship between preparation time and F1-score.  
+3. **Recalculate the F1-score difference** for each shuffled dataset.  
+4. **Repeat the process 1000+ times** to build a null distribution.  
+5. **Compute the p-value**: The proportion of times the simulated F1-score difference is as extreme as or more extreme than the observed difference.  
+
+### **Results**  
+- **Mean Preparation Time Threshold:** 117 minutes  
+- **Observed F1-score Difference:** *0.0132*  
+- **p-value:** *0.333*  
+
+### **Conclusion**  
+Since our **p-value is ≥ 0.05**, we **fail to reject the null hypothesis**, meaning there is **no significant evidence of unfairness** in the model’s performance.  
+
+Here is a visualization of the permutation test, showing the null distribution and the observed F1-score difference:
+
+<iframe
+  src="assets/fairness_analysis.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
+
 
 
 
